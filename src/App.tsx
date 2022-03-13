@@ -2,11 +2,16 @@ import { useState, ReactElement } from 'react'
 import logo from './logo.svg'
 import './App.css'
 
-const App = (): ReactElement => {
-  const [count, setCount] = useState(0)
+import { useAppDispatch, useAppSelector } from './app/hooks'
+import { increment, reset, incrementAmount } from './features/counter/counter-slice'
 
-  const incrementCount = () => setCount(count + 1)
-  const resetCount = () => setCount(0)
+const App = (): ReactElement => {
+  const countValue = useAppSelector((state) => state.counter.value)
+  const dispatch = useAppDispatch()
+
+  const incrementCount = () => dispatch(increment())
+  const resetCount = () => dispatch(reset())
+  const incremenetByThree = () => dispatch(incrementAmount(3))
 
   return (
     <div className="App">
@@ -15,7 +20,10 @@ const App = (): ReactElement => {
         <p>Hello Vite + React!</p>
         <p>
           <button type="button" onClick={incrementCount}>
-            count is: {count}
+            count is: {countValue}
+          </button>
+          <button type="button" onClick={incremenetByThree}>
+            increment(3)
           </button>
           <button type="button" onClick={resetCount}>reset</button>
         </p>

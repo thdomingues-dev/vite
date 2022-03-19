@@ -16,3 +16,4 @@
 > Techs :fire:
 - Vite
 - Redux Toolkit
+- RTK Query

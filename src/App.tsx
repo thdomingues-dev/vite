@@ -6,9 +6,9 @@ import { useAppDispatch, useAppSelector } from './app/hooks'
 import { increment, reset, incrementAmount } from './features/counter/counter-slice'
 import { useFetchBreedsQuery } from './features/api/dogs-api'
 
-const App = (): ReactElement => {
+function App(): ReactElement {
   const [numDogs, setNumDogs] = useState(5)
-  const countValue = useAppSelector(state => state.counter.value)
+  const countValue = useAppSelector(state =>                                                               state.counter.value)
   const dispatch = useAppDispatch()
 
   const { data: breeds, isFetching: isLoading } = useFetchBreedsQuery({ limit: numDogs })
@@ -24,7 +24,9 @@ const App = (): ReactElement => {
         <p>Hello Vite + React!</p>
         <p>
           <button type="button" onClick={incrementCount}>
-            count is: {countValue}
+            count is:
+{' '}
+{countValue}
           </button>
           <button type="button" onClick={incremenetByThree}>
             increment(3)
@@ -66,7 +68,9 @@ const App = (): ReactElement => {
         </div>
 
         <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
+          Edit
+{' '}
+<code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
           <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">

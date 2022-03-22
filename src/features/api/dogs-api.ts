@@ -16,18 +16,18 @@ interface Args {
 
 export const dogsApi = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ 
+  baseQuery: fetchBaseQuery({
     baseUrl: 'https://api.thedogapi.com/v1',
     headers: { 'x-api-key': DOGS_API_KEY },
   }),
   keepUnusedDataFor: 5,
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     fetchBreeds: builder.query<Array<Payload>, Args>({
       query: ({ limit = 10 }) => ({
         url: `/breeds?limit=${limit}`,
-      })
-    })
-  })
+      }),
+    }),
+  }),
 })
 
 export const { useFetchBreedsQuery } = dogsApi

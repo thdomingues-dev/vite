@@ -8,10 +8,10 @@ import { useFetchBreedsQuery } from './features/api/dogs-api'
 
 const App = (): ReactElement => {
   const [numDogs, setNumDogs] = useState(5)
-  const countValue = useAppSelector((state) => state.counter.value)
+  const countValue = useAppSelector(state => state.counter.value)
   const dispatch = useAppDispatch()
 
-  const { data: breeds, isFetching: isLoading } = useFetchBreedsQuery({limit: numDogs})
+  const { data: breeds, isFetching: isLoading } = useFetchBreedsQuery({ limit: numDogs })
 
   const incrementCount = () => dispatch(increment())
   const resetCount = () => dispatch(reset())
@@ -29,12 +29,14 @@ const App = (): ReactElement => {
           <button type="button" onClick={incremenetByThree}>
             increment(3)
           </button>
-          <button type="button" onClick={resetCount}>reset</button>
+          <button type="button" onClick={resetCount}>
+            reset
+          </button>
         </p>
 
         <div>
           <p>Dogs to fetch</p>
-          <select value={numDogs} onChange={(e) => setNumDogs(Number(e.target.value))}>
+          <select value={numDogs} onChange={e => setNumDogs(Number(e.target.value))}>
             <option value="10">10</option>
             <option value="15">15</option>
             <option value="30">30</option>
@@ -67,12 +69,7 @@ const App = (): ReactElement => {
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
         <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
             Learn React
           </a>
           {' | '}
